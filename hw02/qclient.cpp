@@ -89,7 +89,7 @@ int menu() {
 //    cin >> a >> b >> c >> d;
 //    #ifdef echo
 //        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
+//    #endi
 //    Quaternion r(a, b, c, d);
 //    Quaternion ans1 = q * r;
 //    Quaternion ans2 = r * q;
