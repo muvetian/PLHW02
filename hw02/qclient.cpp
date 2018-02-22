@@ -8,12 +8,12 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
-//#include "quaternion.h"
+#include "quaternion.h"
 
 using namespace std;
 
 int menu();
-int generalTest();
+void generalTest();
 void commutTest();
 void assocTest();
 void distrTestA();
@@ -31,8 +31,8 @@ int main() {
         choice = menu();
         try {
             switch (choice) {
-            case 1: generalTest();break;
-//                case 1: commutTest(); break;
+//            		 case 0: generalTest(); break;
+                case 1: commutTest(); break;
 //                case 2: assocTest(); break;
 //                case 3: distrTestA(); break;
 //                case 4: distrTestB(); break;
@@ -54,9 +54,6 @@ int main() {
 
 // Simple routine to print the menu of options, and request a choice.
 // Return the choice number to the caller.
-int generalTest(){
-	return 0;
-}
 int menu() {
     int ans = 0;
     cout << "\nPlease pick a number, any number.\n"
@@ -74,37 +71,67 @@ int menu() {
     #endif
     return ans;
 }
-
-//// Commutative check.
-//// Tests: four-argument constructor, binary *, ==, <, >=.
-//void commutTest() {
-//    double a, b, c, d;
-//    cout << "Enter four doubles for q: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion q(a, b, c, d);
-//    cout << "Enter four doubles for r: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endi
-//    Quaternion r(a, b, c, d);
-//    Quaternion ans1 = q * r;
-//    Quaternion ans2 = r * q;
-//    cout << "q*r = " << ans1 << ";\nr*q = " << ans2 << ";\n";
-//    if (ans1 == ans2) {
-//        cout << "Equal!" << endl;
-//    } else if (ans1 < ans2) {
-//        cout << "q*r is smaller." << endl;
-//    } else if (ans1 >= ans2) { // Logically extraneous but tests >=
-//        cout << "q*r is larger." << endl;
-//    }
-//}
+//Q
+//void generalTest(){
+//	    double a, b, c, d;
+//	    cout << "Enter four doubles for q: ";
+//	    cin >> a >> b >> c >> d;
+//	    #ifdef echo
+//	        cout << a << " " << b << " " << c << " " << d << endl;
+//	    #endif
+//	    Quaternion q(a, b, c, d);
+//	    cout << "Enter four doubles for r: ";
+//	    cin >> a >> b >> c >> d;
+//	    #ifdef echo //what is this for????
+//	         cout << a << " " << b << " " << c << " " << d << endl;
+//	    #endif
+//	    Quaternion r(a, b, c, d);
+//	    cout<< "testing == operator:";
+//	    if(q == r){
+//	    		cout<< "yes!";
+//	    }
+//	    else{
+//	    		cout << "no!";
+//	    }
+//	    cout<< "testing * operator:";
+//	    Quaternion ans1 = q * r;
+//	    Quaternion ans2 = r * q;
+//	    cout << "q * r = " << ans1 << ";\nr*q = " <<ans2 << ";\n";
+//	    if(ans1 == ans2){
+//	    	cout
+//	    }
 //
-//// Associative check.
-//// Tests: binary *, ==
+//}
+// Commutative check.
+// Tests: four-argument constructor, binary *, ==, <, >=.
+void commutTest() {
+    double a, b, c, d;
+    cout << "Enter four doubles for q: ";
+    cin >> a >> b >> c >> d;
+    #ifdef echo
+        cout << a << " " << b << " " << c << " " << d << endl;
+    #endif
+    Quaternion q(a, b, c, d);
+    cout << "Enter four doubles for r: ";
+    cin >> a >> b >> c >> d;
+    #ifdef echo
+        cout << a << " " << b << " " << c << " " << d << endl;
+    #endif
+    Quaternion r(a, b, c, d);
+    Quaternion ans1 = q * r;
+    Quaternion ans2 = r * q;
+    cout << "q*r = " << ans1 << ";\nr*q = " << ans2 << ";\n";
+    if (ans1 == ans2) {
+        cout << "Equal!" << endl;
+    } else if (ans1 < ans2) {
+        cout << "q*r is smaller." << endl;
+    } else if (ans1 >= ans2) { // Logically extraneous but tests >=
+        cout << "q*r is larger." << endl;
+    }
+}
+
+// Associative check.
+// Tests: binary *, ==
 //void assocTest() {
 //    double a, b, c, d;
 //    cout << "Enter four doubles for q: ";

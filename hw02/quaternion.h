@@ -11,26 +11,24 @@
 using namespace std;
 class Quaternion{
 public:
-	int a;
-	int b;
-	int c;
-	int d;
 	Quaternion();
-	Quaternion(int num1, int num2, int num3, int num4);
-	Quaternion(int r);
-	ostream& operator<<(ostream& os){
-		os << '(' << a << ',' << b << ',' << c << ',' << d << ')' ;
-		return os;
-	}
-	istream& operator>> (istream& is)
-	{
-		is>> a >> b >> c >> d;
-		return is;
-	}
+	Quaternion(double num1, double num2, double num3, double num4);
+	Quaternion(double r);
+	double getA() const;
+	double getB() const;
+	double getC() const;
+	double getD() const;
+
 	bool operator==(const Quaternion &other) const;
 	bool operator!=(const Quaternion &other) const;
 	bool operator>(const Quaternion &other) const;
 	bool operator<(const Quaternion &other) const;
+	bool operator>=(const Quaternion &other) const;
+	bool operator<=(const Quaternion &other) const;
+//	Quaternion& operator+=(const Quaternion &other);
+//	Quaternion& operator-=(const Quaternion &other);
+//	Quaternion& operator=(const Quaternion &other);
+	Quaternion& operator*(const Quaternion &other);
 	//TODO: Override the assignment operator
 	//		Quaternion& operator=(const Quaternion& other) // copy assignment
 	//		{
@@ -39,16 +37,19 @@ public:
 	//		            delete[] mArray;              // destroy storage in this
 	//		            size = 0;
 	//		            mArray = nullptr;             // preserve invariants in case next line throws
-	//		            mArray = new int[other.size]; // create storage in this
+	//		            mArray = new double[other.size]; // create storage in this
 	//		            size = other.size;
 	//		        }
 	//		        std::copy(other.mArray, other.mArray + other.size, mArray);
 	//		    }
 	//		    return *this;
 	//		}
-
+private:
+	double a;
+	double b;
+	double c;
+	double d;
 };
-
-
-
+ostream& operator<<(ostream& os,Quaternion& quat);
+//istream& operator>> (istream& is,Quaternion& quat);
 #endif /* QUATERNION_H_ */
