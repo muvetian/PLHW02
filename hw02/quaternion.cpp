@@ -101,6 +101,14 @@ bool Quaternion::operator>=(const Quaternion &other) const {
 	}
 	// Compare the values, and return a bool result.
 }
+Quaternion& Quaternion::operator+(const Quaternion &other){
+	Quaternion q(this->a + other.a, this->b + other.b, this->c + other.c, this->d + other.d);
+	return q;
+}
+Quaternion& Quaternion::operator-(const Quaternion &other){
+	Quaternion q(this->a - other.a, this->b - other.b, this->c - other.c, this->d - other.d);
+	return q;
+}
 Quaternion& Quaternion::operator*(const Quaternion &other){
 	double newA = this->a * other.a - this->b * other.b - this->c * other.c - this->d * other.d;
 	double newB = this->a * other.b + this->b * other.a + this->c * other.d - this->d * other.c;
@@ -109,9 +117,14 @@ Quaternion& Quaternion::operator*(const Quaternion &other){
 	Quaternion q(newA,newB,newC,newD);
 	return q;
 }
-//Quaternion& Quaternion::operator+=(const Quaternion &other){
-//	return *this;
-//}
+Quaternion& Quaternion::operator+=(const Quaternion &other){
+	*this = *this + other;
+	return *this;
+}
+Quaternion& Quaternion::operator*=(const Quaternion &other){
+	 *this = *this * other;
+	 return *this;
+}
 //Quaternion& Quaternion::operator-=(const Quaternion &other){
 //	return *this;
 //}

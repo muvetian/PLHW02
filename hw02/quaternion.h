@@ -25,10 +25,13 @@ public:
 	bool operator<(const Quaternion &other) const;
 	bool operator>=(const Quaternion &other) const;
 	bool operator<=(const Quaternion &other) const;
-//	Quaternion& operator+=(const Quaternion &other);
-//	Quaternion& operator-=(const Quaternion &other);
-//	Quaternion& operator=(const Quaternion &other);
+	Quaternion& operator+(const Quaternion &other);
+	Quaternion& operator-(const Quaternion &other);
 	Quaternion& operator*(const Quaternion &other);
+	Quaternion& operator+=(const Quaternion &other);
+	Quaternion& operator*=(const Quaternion &other);
+
+
 	//TODO: Override the assignment operator
 	//		Quaternion& operator=(const Quaternion& other) // copy assignment
 	//		{
