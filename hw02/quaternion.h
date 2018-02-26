@@ -21,6 +21,7 @@ public:
 	double getD() const;
 	Quaternion& conjugate();
 	double norm();
+	double& operator[](int component);
 	bool operator==(const Quaternion &other) const;
 	bool operator!=(const Quaternion &other) const;
 	bool operator>(const Quaternion &other) const;

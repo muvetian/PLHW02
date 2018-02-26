@@ -36,7 +36,7 @@ int main() {
 			case 2: assocTest(); break;
 			case 3: distrTestA(); break;
 //			case 4: distrTestB(); break;
-			//                case 5: normTest(); break;
+			case 5: normTest(); break;
 			//                case 6: rotation(); break;
 			//                case 7: quit(); break;
 			default: cout << "Invalid command." << endl; break;
@@ -220,34 +220,34 @@ void distrTestA() {
 //
 //// Norm check.
 //// Tests: default constructor, brackets as lvalue, norm, ==.
-//void normTest() {
-//    double a, b, c, d;
-//    cout << "Enter four doubles for q: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion q(a, b, c, d);
-//    cout << "Enter four doubles for r: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion r;
-//    r[0] = a;
-//    r[1] = b;
-//    r[2] = c;
-//    r[3] = d;
-//    double nq = q.norm();
-//    double nr = r.norm();
-//    double nqr = (q*r).norm();
-//    cout << "N(q) = " << nq << ";\n"
-//         << "N(r) = " << nr << ";\n"
-//         << "N(q*r) = " << nqr << ";\n"
-//         << "N(q)*N(r) = " << nq*nr << ";\n";
-//    if (nqr == nq*nr) cout << "Equal!" << endl;
-//    else cout << "Not equal!" << endl;
-//}
+void normTest() {
+    double a, b, c, d;
+    cout << "Enter four doubles for q: ";
+    cin >> a >> b >> c >> d;
+    #ifdef echo
+        cout << a << " " << b << " " << c << " " << d << endl;
+    #endif
+    Quaternion q(a, b, c, d);
+    cout << "Enter four doubles for r: ";
+    cin >> a >> b >> c >> d;
+    #ifdef echo
+        cout << a << " " << b << " " << c << " " << d << endl;
+    #endif
+    Quaternion r;
+    r[0] = a;
+    r[1] = b;
+    r[2] = c;
+    r[3] = d;
+    double nq = q.norm();
+    double nr = r.norm();
+    double nqr = (q*r).norm();
+    cout << "N(q) = " << nq << ";\n"
+         << "N(r) = " << nr << ";\n"
+         << "N(q*r) = " << nqr << ";\n"
+         << "N(q)*N(r) = " << nq*nr << ";\n";
+    if (nqr == nq*nr) cout << "Equal!" << endl;
+    else cout << "Not equal!" << endl;
+}
 //
 //// Rotation (unfinished).
 //// Tests: brackets as rvalue, conjugate, * or *=.
