@@ -35,7 +35,7 @@ int main() {
 			case 1: commutTest(); break;
 			case 2: assocTest(); break;
 			case 3: distrTestA(); break;
-			//                case 4: distrTestB(); break;
+//			case 4: distrTestB(); break;
 			//                case 5: normTest(); break;
 			//                case 6: rotation(); break;
 			//                case 7: quit(); break;
@@ -94,9 +94,9 @@ void generalTest(){
 	Quaternion s(a, b, c, d);
 	Quaternion ans1 = (q + r) * s;
 	Quaternion ans2 = q + r;
-	Quaternion ans3 = s*ans2;
-
-	cout << "(q+r)*s = " << ans1 << ";\nq*s + r*s = " << ans3 << ";\n";
+	Quaternion ans3 = (q+r)*s;
+	cout << "(q+r) = " << ans2 << ";\n s*(q+r) = " << ans3 << ";\n";
+//	cout << "(q+r)*s = " << ans2 << ";\nq*s + r*s = " << ans3 << ";\n";
 }
 // Commutative check.
 // Tests: four-argument constructor, binary *, ==, <, >=.
