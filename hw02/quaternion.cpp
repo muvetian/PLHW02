@@ -91,7 +91,7 @@ bool Quaternion::operator<(const Quaternion &other) const {
 	// Compare the values, and return a bool result.
 }
 bool Quaternion::operator<=(const Quaternion &other) const {
-	if(*this == other && *this < other){
+	if(*this == other || *this < other){
 		return true;
 	}
 	else{
@@ -100,7 +100,7 @@ bool Quaternion::operator<=(const Quaternion &other) const {
 	// Compare the values, and return a bool result.
 }
 bool Quaternion::operator>=(const Quaternion &other) const {
-	if(*this == other && *this > other){
+	if(*this == other || *this > other){
 		return true;
 	}
 	else{

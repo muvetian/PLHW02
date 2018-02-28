@@ -86,11 +86,13 @@ void generalTest(){
 	cout << a << " " << b << " " << c << " " << d << endl;
 #endif
 	Quaternion r(a, b, c, d);
-	double t = 4.0;
-	Quaternion ans1 = t * q;
-	Quaternion ans2 = q / t;
+	if( q == r){
+		cout << "equal!";
+	}
+	else{
+		cout << "larger than";
+	}
 
-	cout << "t * q" << ans1 << ";\n q / t = " << ans2 << ";\n";
 
 }
 // Commutative check.
@@ -277,7 +279,7 @@ void rotation() {
 	// Calculating for the unit vector
 	Quaternion n = Quaternion(0,nx,ny,nz);
 	n /= n.norm();
-	cout << n;
+
 
 	// n * sin(theta/2)
 	Quaternion m = n * sin((theta/2) * pi / 180.0);
@@ -285,7 +287,7 @@ void rotation() {
 
 	// Real part being cos(theta/2) and imaginary parts being n * sin(theta/2)
 	q += m;
-	cout << q;
+
 	// Create the quaternion v
 	Quaternion v = Quaternion(0,rx,ry,rz);
 	Quaternion ans = q * v * q.conjugate();
