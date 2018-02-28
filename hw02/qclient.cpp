@@ -35,7 +35,7 @@ int main() {
 			case 1: commutTest(); break;
 			case 2: assocTest(); break;
 			case 3: distrTestA(); break;
-//			case 4: distrTestB(); break;
+			//                case 4: distrTestB(); break;
 			//                case 5: normTest(); break;
 			//                case 6: rotation(); break;
 			//                case 7: quit(); break;
