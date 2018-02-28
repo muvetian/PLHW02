@@ -277,6 +277,7 @@ void rotation() {
 	// Calculating for the unit vector
 	Quaternion n = Quaternion(0,nx,ny,nz);
 	n /= n.norm();
+	cout << n;
 
 	// n * sin(theta/2)
 	Quaternion m = n * sin((theta/2) * pi / 180.0);
@@ -284,9 +285,12 @@ void rotation() {
 
 	// Real part being cos(theta/2) and imaginary parts being n * sin(theta/2)
 	q += m;
+	cout << q;
 	// Create the quaternion v
 	Quaternion v = Quaternion(0,rx,ry,rz);
 	Quaternion ans = q * v * q.conjugate();
+
+
 
 
 

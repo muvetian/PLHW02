@@ -27,7 +27,7 @@ public:
 	bool operator<=(const Quaternion &other) const;
 	Quaternion& operator=(const Quaternion&);
 	Quaternion& operator*=(const Quaternion &);
-	Quaternion& conjugate()const;
+	Quaternion conjugate()const;
 	Quaternion& operator/=(const Quaternion &);
 	Quaternion& operator+=(const Quaternion &other);
 	Quaternion& operator-=(const Quaternion &other);

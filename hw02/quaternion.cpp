@@ -117,7 +117,7 @@ Quaternion& Quaternion::operator-=(const Quaternion &other){
 	return *this;
 }
 
-Quaternion& Quaternion::conjugate()const{
+Quaternion Quaternion::conjugate()const{
 	double newA = a;
 	double newB = -b;
 	double newC = -c;
