@@ -44,29 +44,6 @@ Quaternion& Quaternion::operator=(const Quaternion& other){
 	return *this;
 
 }
-double& Quaternion::operator[](int component){
-	if(component == 0){
-		return this->a;
-	}
-	else{
-		if(component == 1){
-			return this->b;
-		}
-		else{
-			if(component == 2){
-				return this->c;
-			}
-			else{
-				if(component == 3){
-					return this->d;
-				}
-				else{
-					throw out_of_range ("ERROR: Index out of range.");
-				}
-			}
-		}
-	}
-}
 bool Quaternion::operator==(const Quaternion &other) const {
 	if(this->a == other.a && this->b == other.b && this->c == other.c && this->d == other.d){
 		return true;
@@ -131,10 +108,38 @@ bool Quaternion::operator>=(const Quaternion &other) const {
 	}
 	// Compare the values, and return a bool result.
 }
+Quaternion& Quaternion::operator-=(const Quaternion &other){
+	a -= other.a;
+	b -= other.b;
+	c -= other.c;
+	d -= other.d;
 
-Quaternion& Quaternion::operator-(const Quaternion &other){
-	Quaternion q(this->a - other.a, this->b - other.b, this->c - other.c, this->d - other.d);
+	return *this;
+}
+
+Quaternion& Quaternion::conjugate()const{
+	double newA = a;
+	double newB = -b;
+	double newC = -c;
+	double newD = -d;
+	Quaternion q(newA, newB, newC, newD);
 	return q;
+
+}
+Quaternion& Quaternion::operator/=(const Quaternion &other){
+	if (other.a == 0 && other.b == 0 && other.c == 0 && other.d == 0){
+		throw domain_error("Denominator cannot be a zeror quaternion!");
+	}
+	Quaternion r = other;
+	double product = r.norm() * r.norm();
+	Quaternion q = *this;
+	q *= r.conjugate();
+	a = q.a/product;
+	b = q.b/product;
+	c = q.c/product;
+	d = q.d/product;
+	return *this;
+
 }
 Quaternion& Quaternion::operator*=(const Quaternion &other){
 	double newA = (this->a * other.a) - (this->b * other.b) - (this->c * other.c) - (this->d * other.d);
@@ -157,7 +162,33 @@ Quaternion& Quaternion::operator+=(const Quaternion &other){
 	return *this;
 }
 
-//TODO: istream
+double Quaternion::norm() const{
+
+	return sqrt(a*a + b*b + c*c + d*d);
+}
+double& Quaternion::operator[](int component){
+	if(component == 0){
+		return this->a;
+	}
+	else{
+		if(component == 1){
+			return this->b;
+		}
+		else{
+			if(component == 2){
+				return this->c;
+			}
+			else{
+				if(component == 3){
+					return this->d;
+				}
+				else{
+					throw out_of_range ("ERROR: Index out of range.");
+				}
+			}
+		}
+	}
+}
 istream& operator>> (istream& is,Quaternion& quat){
 	cin >> quat.a >> quat.b >> quat.c >> quat.d;
 	return is;
@@ -178,3 +209,13 @@ const Quaternion operator+(const Quaternion& p,const Quaternion& q){
 	return answer;
 }
 
+const Quaternion operator-(const Quaternion& p,const Quaternion& q){
+	Quaternion answer = p;
+	answer -= q;
+	return answer;
+}
+const Quaternion operator/(const Quaternion& p,const Quaternion& q){
+	Quaternion answer = p;
+	answer /= q;
+	return answer;
+}

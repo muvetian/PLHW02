@@ -35,15 +35,10 @@ int main() {
 			case 1: commutTest(); break;
 			case 2: assocTest(); break;
 			case 3: distrTestA(); break;
-<<<<<<< HEAD
-			//                case 4: distrTestB(); break;
-			//                case 5: normTest(); break;
-=======
-//			case 4: distrTestB(); break;
+			case 4: distrTestB(); break;
 			case 5: normTest(); break;
->>>>>>> 1f00b998b2f600f4ce9ed05a92692697a6a50ed8
-			//                case 6: rotation(); break;
-			//                case 7: quit(); break;
+			case 6: rotation(); break;
+			case 7: quit(); break;
 			default: cout << "Invalid command." << endl; break;
 			}
 		} catch (domain_error& e) {
@@ -91,17 +86,12 @@ void generalTest(){
 	cout << a << " " << b << " " << c << " " << d << endl;
 #endif
 	Quaternion r(a, b, c, d);
-	cout << "Enter four doubles for s: ";
-	cin >> a >> b >> c >> d;
-#ifdef echo
-	cout << a << " " << b << " " << c << " " << d << endl;
-#endif
-	Quaternion s(a, b, c, d);
-	Quaternion ans1 = (q + r) * s;
-	Quaternion ans2 = q + r;
-	Quaternion ans3 = (q+r)*s;
-	cout << "(q+r) = " << ans2 << ";\n s*(q+r) = " << ans3 << ";\n";
-//	cout << "(q+r)*s = " << ans2 << ";\nq*s + r*s = " << ans3 << ";\n";
+	double t = 4.0;
+	Quaternion ans1 = t * q;
+	Quaternion ans2 = q / t;
+
+	cout << "t * q" << ans1 << ";\n q / t = " << ans2 << ";\n";
+
 }
 // Commutative check.
 // Tests: four-argument constructor, binary *, ==, <, >=.
@@ -191,100 +181,118 @@ void distrTestA() {
 	else cout << "Equal!" << endl;
 }
 //
-//// Distributive check B.
-//// Tests: binary -, /, -=, /=, assignment operator, default constructor, ==.
-//void distrTestB() {
-//    double a, b, c, d;
-//    cout << "Enter four doubles for q: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion q(a, b, c, d);
-//    cout << "Enter four doubles for r: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion r(a, b, c, d);
-//    cout << "Enter four doubles for s: ";
-//    cin >> a >> b >> c >> d;
-//    #ifdef echo
-//        cout << a << " " << b << " " << c << " " << d << endl;
-//    #endif
-//    Quaternion s(a, b, c, d);
-//    Quaternion ans1; // will get (q-r)/s but we do this on several lines to test more operators.
-//    ans1 = q;
-//    ans1 -= r;
-//    ans1 /= s;
-//    Quaternion ans2 = q/s - r/s;
-//    cout << "(q-r)/s = " << ans1 << ";\nq/s - r/s = " << ans2 << ";\n";
-//    if (ans1 == ans2) cout << "Equal!" << endl;
-//    else cout << "Not equal!" << endl;
-//}
-//
+// Distributive check B.
+// Tests: binary -, /, -=, /=, assignment operator, default constructor, ==.
+void distrTestB() {
+	double a, b, c, d;
+	cout << "Enter four doubles for q: ";
+	cin >> a >> b >> c >> d;
+#ifdef echo
+	cout << a << " " << b << " " << c << " " << d << endl;
+#endif
+	Quaternion q(a, b, c, d);
+	cout << "Enter four doubles for r: ";
+	cin >> a >> b >> c >> d;
+#ifdef echo
+	cout << a << " " << b << " " << c << " " << d << endl;
+#endif
+	Quaternion r(a, b, c, d);
+	cout << "Enter four doubles for s: ";
+	cin >> a >> b >> c >> d;
+#ifdef echo
+	cout << a << " " << b << " " << c << " " << d << endl;
+#endif
+	Quaternion s(a, b, c, d);
+	Quaternion ans1; // will get (q-r)/s but we do this on several lines to test more operators.
+	ans1 = q;
+	ans1 -= r;
+	ans1 /= s;
+	Quaternion ans2 = q/s - r/s;
+	cout << "(q-r)/s = " << ans1 << ";\nq/s - r/s = " << ans2 << ";\n";
+	if (ans1 == ans2) cout << "Equal!" << endl;
+	else cout << "Not equal!" << endl;
+}
+
 //// Norm check.
 //// Tests: default constructor, brackets as lvalue, norm, ==.
 void normTest() {
-    double a, b, c, d;
-    cout << "Enter four doubles for q: ";
-    cin >> a >> b >> c >> d;
-    #ifdef echo
-        cout << a << " " << b << " " << c << " " << d << endl;
-    #endif
-    Quaternion q(a, b, c, d);
-    cout << "Enter four doubles for r: ";
-    cin >> a >> b >> c >> d;
-    #ifdef echo
-        cout << a << " " << b << " " << c << " " << d << endl;
-    #endif
-    Quaternion r;
-    r[0] = a;
-    r[1] = b;
-    r[2] = c;
-    r[3] = d;
-    double nq = q.norm();
-    double nr = r.norm();
-    double nqr = (q*r).norm();
-    cout << "N(q) = " << nq << ";\n"
-         << "N(r) = " << nr << ";\n"
-         << "N(q*r) = " << nqr << ";\n"
-         << "N(q)*N(r) = " << nq*nr << ";\n";
-    if (nqr == nq*nr) cout << "Equal!" << endl;
-    else cout << "Not equal!" << endl;
+	double a, b, c, d;
+	cout << "Enter four doubles for q: ";
+	cin >> a >> b >> c >> d;
+#ifdef echo
+	cout << a << " " << b << " " << c << " " << d << endl;
+#endif
+	Quaternion q(a, b, c, d);
+	cout << "Enter four doubles for r: ";
+	cin >> a >> b >> c >> d;
+#ifdef echo
+	cout << a << " " << b << " " << c << " " << d << endl;
+#endif
+	Quaternion r;
+	r[0] = a;
+	r[1] = b;
+	r[2] = c;
+	r[3] = d;
+	double nq = q.norm();
+	double nr = r.norm();
+	double nqr = (q*r).norm();
+	cout << "N(q) = " << nq << ";\n"
+			<< "N(r) = " << nr << ";\n"
+			<< "N(q*r) = " << nqr << ";\n"
+			<< "N(q)*N(r) = " << nq*nr << ";\n";
+	if (nqr == nq*nr) cout << "Equal!" << endl;
+	else cout << "Not equal!" << endl;
 }
-//
-//// Rotation (unfinished).
-//// Tests: brackets as rvalue, conjugate, * or *=.
-//void rotation() {
-//    double nx, ny, nz, rx, ry, rz, theta;
-//    cout << " Enter coordinates for axis of rotation: ";
-//    cin >> nx >> ny >> nz;
-//    #ifdef echo
-//        cout << nx << " " << ny << " " << nz << endl;
-//    #endif
-//    cout << " Enter coordinates for object you are rotating: ";
-//    cin >> rx >> ry >> rz;
-//    #ifdef echo
-//        cout << rx << " " << ry << " " << rz << endl;
-//    #endif
-//    cout << " Enter angle of rotation in degrees: ";
-//    cin >> theta;
-//    #ifdef echo
-//        cout << theta << endl;
-//    #endif
-//
-//    const double pi = 3.141592653589793;
-//
-//    // Add code to compute the unit normal, throw a domain_error if this
-//    // is impossible, and then compute a quaternion named ans whose imaginary
-//    // parts have the rotated coordinates.
-//
-//    // CODE REMOVED
-//
-//    cout << "\n Rotated position is (" << ans[1] << ", " << ans[2]
-//         << ", " << ans[3] << ")" << endl;
-//}
+
+// Rotation (unfinished).
+// Tests: brackets as rvalue, conjugate, * or *=.
+void rotation() {
+	double nx, ny, nz, rx, ry, rz, theta;
+	cout << "Enter coordinates for axis of rotation: ";
+	cin >> nx >> ny >> nz;
+#ifdef echo
+	cout << nx << " " << ny << " " << nz << endl;
+#endif
+
+	cout << "Enter coordinates for object you are rotating: ";
+	cin >> rx >> ry >> rz;
+#ifdef echo
+	cout << rx << " " << ry << " " << rz << endl;
+#endif
+	cout << "Enter angle of rotation in degrees: ";
+	cin >> theta;
+#ifdef echo
+	cout << theta << endl;
+#endif
+
+	const double pi = 3.141592653589793;
+
+	// Add code to compute the unit normal, throw a domain_error if this
+	// is impossible, and then compute a quaternion named ans whose imaginary
+	// parts have the rotated coordinates.
+	if (nx == 0 && ny == 0 && nz == 0){
+		throw domain_error("Cannot use zero vector for the axis!");
+	}
+
+	// Calculating for the unit vector
+	Quaternion n = Quaternion(0,nx,ny,nz);
+	n /= n.norm();
+
+	// n * sin(theta/2)
+	Quaternion m = n * sin((theta/2) * pi / 180.0);
+	Quaternion q = Quaternion(cos((theta/2) * pi / 180.0),0,0,0);
+
+	// Real part being cos(theta/2) and imaginary parts being n * sin(theta/2)
+	q += m;
+	// Create the quaternion v
+	Quaternion v = Quaternion(0,rx,ry,rz);
+	Quaternion ans = q * v * q.conjugate();
+
+
+
+	cout << "\nRotated position is (" << ans[1] << ", " << ans[2]
+																<< ", " << ans[3] << ")" << endl;
+}
 
 // Simple routine to call when the quit command is received.
 void quit() {

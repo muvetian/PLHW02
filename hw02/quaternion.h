@@ -8,6 +8,7 @@
 #ifndef QUATERNION_H_
 #define QUATERNION_H_
 #include <iostream>
+#include <math.h>
 using namespace std;
 class Quaternion{
 public:
@@ -15,9 +16,7 @@ public:
 	Quaternion(double num1, double num2, double num3, double num4);
 	Quaternion(double r);
 	Quaternion(const Quaternion&);
-	Quaternion& conjugate();
-	double norm();
-	double& operator[](int component);
+
 
 
 	bool operator==(const Quaternion &other) const;
@@ -27,10 +26,14 @@ public:
 	bool operator>=(const Quaternion &other) const;
 	bool operator<=(const Quaternion &other) const;
 	Quaternion& operator=(const Quaternion&);
-	Quaternion& operator-(const Quaternion &other);
-	Quaternion& operator*=(const Quaternion &other);
+	Quaternion& operator*=(const Quaternion &);
+	Quaternion& conjugate()const;
+	Quaternion& operator/=(const Quaternion &);
 	Quaternion& operator+=(const Quaternion &other);
+	Quaternion& operator-=(const Quaternion &other);
 
+	double norm()const;
+	double& operator[](int component);
 
 	friend ostream& operator<<(ostream& os,Quaternion& quat);
 	friend istream& operator>> (istream& is,Quaternion& quat);
@@ -43,6 +46,7 @@ private:
 };
 const Quaternion operator+(const Quaternion&,const Quaternion&);
 const Quaternion operator*(const Quaternion&,const Quaternion&);
-
+const Quaternion operator-(const Quaternion&,const Quaternion&);
+const Quaternion operator/(const Quaternion&,const Quaternion&);
 
 #endif /* QUATERNION_H_ */
