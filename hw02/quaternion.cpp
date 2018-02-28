@@ -44,6 +44,29 @@ Quaternion& Quaternion::operator=(const Quaternion& other){
 	return *this;
 
 }
+double& Quaternion::operator[](int component){
+	if(component == 0){
+		return this->a;
+	}
+	else{
+		if(component == 1){
+			return this->b;
+		}
+		else{
+			if(component == 2){
+				return this->c;
+			}
+			else{
+				if(component == 3){
+					return this->d;
+				}
+				else{
+					throw out_of_range ("ERROR: Index out of range.");
+				}
+			}
+		}
+	}
+}
 bool Quaternion::operator==(const Quaternion &other) const {
 	if(this->a == other.a && this->b == other.b && this->c == other.c && this->d == other.d){
 		return true;

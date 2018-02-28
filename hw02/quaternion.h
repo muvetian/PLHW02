@@ -15,7 +15,9 @@ public:
 	Quaternion(double num1, double num2, double num3, double num4);
 	Quaternion(double r);
 	Quaternion(const Quaternion&);
-
+	Quaternion& conjugate();
+	double norm();
+	double& operator[](int component);
 
 
 	bool operator==(const Quaternion &other) const;
