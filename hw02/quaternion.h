@@ -13,30 +13,30 @@ using namespace std;
 class Quaternion{
 public:
 	Quaternion();
-	Quaternion(double num1, double num2, double num3, double num4);
-	Quaternion(double r);
+	Quaternion(double, double, double, double);
+	Quaternion(double);
 	Quaternion(const Quaternion&);
 
 
 
-	bool operator==(const Quaternion &other) const;
-	bool operator!=(const Quaternion &other) const;
-	bool operator>(const Quaternion &other) const;
-	bool operator<(const Quaternion &other) const;
-	bool operator>=(const Quaternion &other) const;
-	bool operator<=(const Quaternion &other) const;
+	bool operator==(const Quaternion&) const;
+	bool operator!=(const Quaternion&) const;
+	bool operator>(const Quaternion&) const;
+	bool operator<(const Quaternion&) const;
+	bool operator>=(const Quaternion&) const;
+	bool operator<=(const Quaternion&) const;
 	Quaternion& operator=(const Quaternion&);
 	Quaternion& operator*=(const Quaternion &);
 	Quaternion conjugate()const;
 	Quaternion& operator/=(const Quaternion &);
-	Quaternion& operator+=(const Quaternion &other);
-	Quaternion& operator-=(const Quaternion &other);
+	Quaternion& operator+=(const Quaternion &);
+	Quaternion& operator-=(const Quaternion &);
 
 	double norm()const;
-	double& operator[](int component);
+	double& operator[](int);
 
-	friend ostream& operator<<(ostream& os,Quaternion& quat);
-	friend istream& operator>> (istream& is,Quaternion& quat);
+	friend ostream& operator<<(ostream&,Quaternion&);
+	friend istream& operator>> (istream&,Quaternion&);
 
 private:
 	double a;

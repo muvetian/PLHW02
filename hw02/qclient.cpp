@@ -13,7 +13,6 @@
 using namespace std;
 
 int menu();
-void generalTest();
 void commutTest();
 void assocTest();
 void distrTestA();
@@ -31,7 +30,6 @@ int main() {
 		choice = menu();
 		try {
 			switch (choice) {
-			case 0: generalTest(); break;
 			case 1: commutTest(); break;
 			case 2: assocTest(); break;
 			case 3: distrTestA(); break;
@@ -72,29 +70,6 @@ int menu() {
 	return ans;
 }
 
-void generalTest(){
-	double a, b, c, d;
-	cout << "Enter four doubles for q: ";
-	cin >> a >> b >> c >> d;
-#ifdef echo
-	cout << a << " " << b << " " << c << " " << d << endl;
-#endif
-	Quaternion q(a, b, c, d);
-	cout << "Enter four doubles for r: ";
-	cin >> a >> b >> c >> d;
-#ifdef echo
-	cout << a << " " << b << " " << c << " " << d << endl;
-#endif
-	Quaternion r(a, b, c, d);
-	if( q == r){
-		cout << "equal!";
-	}
-	else{
-		cout << "larger than";
-	}
-
-
-}
 // Commutative check.
 // Tests: four-argument constructor, binary *, ==, <, >=.
 void commutTest() {
@@ -291,9 +266,6 @@ void rotation() {
 	// Create the quaternion v
 	Quaternion v = Quaternion(0,rx,ry,rz);
 	Quaternion ans = q * v * q.conjugate();
-
-
-
 
 
 	cout << "\nRotated position is (" << ans[1] << ", " << ans[2]

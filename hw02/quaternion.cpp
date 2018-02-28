@@ -128,7 +128,7 @@ Quaternion Quaternion::conjugate()const{
 }
 Quaternion& Quaternion::operator/=(const Quaternion &other){
 	if (other.a == 0 && other.b == 0 && other.c == 0 && other.d == 0){
-		throw domain_error("Denominator cannot be a zeror quaternion!");
+		throw domain_error("Denominator cannot be a zero quaternion!");
 	}
 	Quaternion r = other;
 	double product = r.norm() * r.norm();
@@ -167,26 +167,12 @@ double Quaternion::norm() const{
 	return sqrt(a*a + b*b + c*c + d*d);
 }
 double& Quaternion::operator[](int component){
-	if(component == 0){
-		return this->a;
-	}
-	else{
-		if(component == 1){
-			return this->b;
-		}
-		else{
-			if(component == 2){
-				return this->c;
-			}
-			else{
-				if(component == 3){
-					return this->d;
-				}
-				else{
-					throw out_of_range ("ERROR: Index out of range.");
-				}
-			}
-		}
+	switch (component) {
+	case 0: return this->a;
+	case 1: return this->b;
+	case 2: return this->c;
+	case 3: return this->d;
+	default: throw out_of_range ("ERROR: Index out of range.");
 	}
 }
 istream& operator>> (istream& is,Quaternion& quat){
